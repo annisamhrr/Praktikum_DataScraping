@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% block body %}
+<h2>Detik Jateng</h2>
+<div class="row">
+    {% for item in data %}
+    <div class="col-3">
+        {% if item.find('img') and item.find('img').has_attr('src') %}
+        <img src="{{ item.find('img')['src'] }}" class="img-fluid">
+        {% endif %}
+    </div>
+    <div class="col-9">
+        {% if item.find('a') and item.find('a').has_attr('href') %}
+        <a href="{{ item.find('a')['href'] }}">
+            <p>{{ item.find('h2').text.strip() if item.find('h2') else 'Tanpa Judul' }}</p>
+        </a>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
